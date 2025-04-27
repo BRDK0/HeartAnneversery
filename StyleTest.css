@@ -1,6 +1,9 @@
 body {
     margin: 0;
-    background: #1a1a1a;
+    background-image: url('WhaleBackground.svg');  /* Add the whale image */
+    background-size: cover;  /* Ensure the background covers the entire page */
+    background-position: center center;  /* Center the image */
+    background-repeat: no-repeat;  /* Prevent repeating the image */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,7 +25,7 @@ body {
     position: relative;
     width: 100px;
     height: 90px;
-    background: #ff4d6d;
+    background: #eb022d;
     border: none;
     outline: none;
     cursor: pointer;
@@ -38,7 +41,7 @@ body {
     position: absolute;
     width: 100px;
     height: 90px;
-    background: #ff4d6d;
+    background: #f01b42;
     border-radius: 50%;
   }
   
@@ -146,4 +149,139 @@ body {
     pointer-events: none;
     z-index: 1;
   }
+
+  .falling-bunny, .falling-carnation {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    animation: fallDown 4s linear forwards;
+    z-index: 10;
+    pointer-events: none;
+  }
+  
+  @media (max-width: 768px) {
+    .falling-bunny, .falling-carnation {
+      width: 35px;
+      height: 35px;
+    }
+  }
+  
+  @keyframes fallDown {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    90% {
+      transform: translateY(calc(100vh - 100px));
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(calc(100vh - 80px));
+      opacity: 0;
+    }
+  }
+
+  
+  .falling-big-heart {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: pink;
+    transform: rotate(-45deg);
+    animation: fallDown 4s linear forwards;
+    z-index: 5;
+    pointer-events: none;
+    border-radius: 50% 50% 0 0;
+  }
+  
+  .falling-big-heart::before,
+  .falling-big-heart::after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: pink;
+    border-radius: 50%;
+  }
+  
+  .falling-big-heart::before {
+    top: -25px;
+    left: 0;
+  }
+  
+  .falling-big-heart::after {
+    left: 25px;
+    top: 0;
+  }
+  
+  @keyframes fallDown {
+    0% {
+      transform: translateY(0) rotate(-45deg);
+      opacity: 1;
+    }
+    90% {
+      transform: translateY(calc(100vh - 100px)) rotate(-45deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(calc(100vh - 80px)) rotate(-45deg);
+      opacity: 0;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .falling-big-heart,
+    .falling-big-heart::before,
+    .falling-big-heart::after {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  
+  #heartClickCounterDisplay {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Comic Sans MS', 'Cursive', sans-serif;
+    font-size: 2.8rem;
+    color: #ff69b4;
+    background: rgba(255, 240, 245, 0.85);
+    padding: 14px 28px;
+    border: 2px solid #ffb6c1;
+    border-radius: 25px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    animation: pulseHeart 2.5s infinite;
+    z-index: 20;
+    user-select: none;
+    white-space: nowrap; /* Ensures the text doesn't wrap */
+  }
+  
+  @keyframes pulseHeart {
+    0% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.05); }
+    100% { transform: translateX(-50%) scale(1); }
+  }
+  
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
+    #heartClickCounterDisplay {
+      font-size: 2rem;  /* Smaller text size on mobile */
+      padding: 10px 20px; /* Reduced padding for smaller screens */
+      top: 3%;  /* Adjusted top positioning */
+    }
+  }
+  
+  /* Mobile Portrait Adjustment */
+  @media (max-width: 480px) {
+    #heartClickCounterDisplay {
+      font-size: 1.6rem;  /* Even smaller text size */
+      padding: 8px 16px;  /* Smaller padding */
+      top: 2%;  /* Further adjust the positioning */
+    }
+  }
+  
+  
+  
   
